@@ -6,7 +6,11 @@ from MetricasSimilitud import EuclidianaPro, Canberra, Manhattan, Euclidiana
 
 ###CARGAR INSTANCIA DE ENTRENAMIENTO
 
-archivo = open("wine_entrenamiento7525.csv","r")
+#archivo = open("wine_training60.0.csv","r")
+#archivo = open("wine_training70.0.csv","r")
+#archivo = open("wine_training80.0.csv","r")
+archivo = open("wine_training90.0.csv","r")
+
 contenido = archivo.readlines()
 
 #VISUALIZA EL CONTENIDO DEL ARCHIVO
@@ -24,10 +28,11 @@ lista = [linea.split(",") for linea in contenido]
 #VISUALIZA LISTA PROCESADA
 print("Lista de listas separadas por comas: ")
 #Impreso línea a línea
+"""
 for l in lista:
     print(l)
 print("\n\n")
-
+"""
 
 instancia = [ [ list(map(float,x[:13])), float(x[13].replace("\n","")) ] for x in lista ] #iris
 
@@ -36,33 +41,39 @@ print("Total de datos de la Instancia",len(instancia))
 print("Instancia de entrenamiento:")
 #VISUALIZA EL CONTENIDO DEL ARCHIVO
 #Impreso línea a línea
+"""
 for l in instancia:
     print(l)
 print("\n\n")
-
+"""
 
 ##############################################################################
 ###CARGAR INSTANCIA DE PRUEBA
 
-archivo = open("wine_prueba7525.csv","r")
+#archivo = open("wine_test60.0.csv","r")
+#archivo = open("wine_test70.0.csv","r")
+#archivo = open("wine_test80.0.csv","r")
+archivo = open("wine_test90.0.csv","r")
 contenido = archivo.readlines()
 
 #VISUALIZA EL CONTENIDO DEL ARCHIVO
+"""
 print('\nArchivo Completo: ') #Impreso línea a línea
 for l in contenido:
     print(l, end="") #por el formato en que se lee el archivo se quita el terminador (salto de linea) para evidar un doble salto
 print("\n\n")
-
+"""
 
 lista = [linea.split(",") for linea in contenido]
 
 #VISUALIZA LISTA PROCESADA
 print("Lista de listas separadas por comas: ")
 #Impreso línea a línea
+"""
 for l in lista:
     print(l)
 print("\n\n")
-
+"""
 prueba = [ [ list(map(float,x[:13])), float(x[13].replace("\n","")) ] for x in lista ] #iris
 
 print("Total de datos de la Instancia",len(prueba))
@@ -70,10 +81,11 @@ print("Total de datos de la Instancia",len(prueba))
 print("Instancia de prueba:")
 #VISUALIZA EL CONTENIDO DEL ARCHIVO
 #Impreso línea a línea
+"""
 for l in prueba:
     print(l)
 print("\n\n")
-
+"""
 
 ###############################################################################
 ###DEFINIR QUE MEDIDA DE SIMILITUD SE UTILIZARÁ
@@ -122,7 +134,7 @@ for K in range(1,len(instancia)):
             #print(distancia_NC_i)
             estructuraDatos[NoCaso] = distancia_NC_i
 
-        #ordenado = sorted(estructuraDatos.items(), key=lambda x: x[1])
+
         ordenado = sorted(estructuraDatos.items(), key=lambda x: x[1], reverse = False)
 
 
@@ -161,12 +173,6 @@ for K in range(1,len(instancia)):
     print("Total de pruebas: " + str(len(prueba)))
     print("Rendimiento: " + str(contAciertos/len(prueba)*100))
 
-
-"""
-    if contAciertos == len(prueba) and K != 1:
-        print(f"LA K = {K} PROPORCIONO LOS MEJORES RESULTADOS")
-        break
-"""
 
 print(aciertosK)
 may = 0
